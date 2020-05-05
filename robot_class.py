@@ -77,7 +77,9 @@ class robot:
             One item in the returned list should be in the form: [landmark_index, dx, dy].
             '''
            
-        measurements = []
+        measurements = [(i, x - self.x + self.rand(), y - self.y + self.rand())\
+                        for i, (x, y) in enumerate(self.landmarks) if \
+                        abs(x - self.x) <= self.measurement_range and (y - self.y) <= self.measurement_range]
         
         ## TODO: iterate through all of the landmarks in a world
         
